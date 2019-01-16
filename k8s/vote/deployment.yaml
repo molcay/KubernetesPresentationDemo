@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: k8s-demo-vote
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: demo-vote
+    spec:
+      containers:
+      - image: molcay/k8s-demo-vote
+        name: k8s-demo-vote

@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: k8s-demo-worker
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: demo-worker
+    spec:
+      containers:
+      - image: molcay/k8s-demo-worker
+        name: k8s-demo-worker

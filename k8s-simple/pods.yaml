@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: k8s-demo-vote-pod
+  labels:
+    app: demo-vote
+spec:
+  containers:
+    - name: k8s-demo-vote
+      image: molcay/k8s-demo-vote
+      ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis
+  labels:
+    app: demo-vote
+spec:
+  containers:
+    - name: redis
+      image: redis
+      ports:
+        - containerPort: 6379

@@ -13,8 +13,14 @@ spec:
       - image: postgres:9.4
         name: k8s-demo-db
         volumeMounts:
-        - mountPath: /var/lib/postgresql/data
-          name: db-data
+          - mountPath: /var/lib/postgresql/data
+            name: db-data
+        env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: pgpassword
+                key: POSTGRES_PASSWORD
       volumes:
       - name: db-data
-        emptyDir: {} 
+        emptyDir: {}

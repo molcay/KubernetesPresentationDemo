@@ -14,12 +14,16 @@ services:
     ports:
       - "5001:80"
       - "5858:5858"
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     networks:
       - front-tier
       - back-tier
 
   worker:
     image: molcay/k8s-demo-result
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     depends_on:
       - "redis"
     networks:
@@ -35,6 +39,8 @@ services:
   db:
     image: postgres:9.4
     container_name: db
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       - "db-data:/var/lib/postgresql/data"
     networks:

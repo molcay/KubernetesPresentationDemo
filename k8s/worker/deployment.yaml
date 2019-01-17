@@ -12,3 +12,11 @@ spec:
       containers:
       - image: molcay/k8s-demo-worker
         name: k8s-demo-worker
+        env: 
+          - name: ENV_VAR_1
+            value: asd
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: pgpassword
+                key: POSTGRES_PASSWORD

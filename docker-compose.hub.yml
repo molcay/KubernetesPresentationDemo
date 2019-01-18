@@ -21,7 +21,7 @@ services:
       - back-tier
 
   worker:
-    image: molcay/k8s-demo-result
+    image: molcay/k8s-demo-worker
     environment:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     depends_on:
